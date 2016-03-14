@@ -14,12 +14,28 @@ NOTES:
 */
 
 #include <stdio.h>
-
+void swap(struct student *, int, int);
 struct student {
 	char name[10];
 	int score;
 };
-
 void * scoresDescendingSort(struct student *students, int len) {
-	return NULL;
+	int i, j;
+	if (len <= 0 || students == NULL)
+		return NULL;
+	else{
+		for (i = 0; i < len; i++){
+			for (j = i + 1; j < len; j++){
+				if (students[i].score < students[j].score){
+					swap(students, i, j);
+				}
+			}
+		}
+	}
+}
+void swap(struct student *students, int i, int j){
+	struct student t;
+	t = students[i];
+	students[i] = students[j];
+	students[j] = t;
 }
